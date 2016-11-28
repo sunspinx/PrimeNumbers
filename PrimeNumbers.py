@@ -48,6 +48,8 @@ time.sleep(2)
 clear = lambda: os.system('cls')
 clear()
 
+# start time of loop
+start_time = time.clock()
 # loop starts from the number_minimum which is the biggest one from text file or the default value
 for number in range(num_min, num_max+1):
     # we open file for write (not overwrite)
@@ -73,15 +75,18 @@ for number in range(num_min, num_max+1):
         prime_numbers_found += 1
         # close the file
         f.close()
-
     # show current number
     stdout.write("\rChecking number: " + str(number) + " of " +str(num_max))
     stdout.flush()
 
+# we were searching for prime numbers for time (seconds)
+total_time = float("{0:.2f}".format(time.clock() - start_time))
+
 stdout.write("\rApplication checked " + str(num_max - num_min) + " numbers and found " + str(prime_numbers_found) + " prime numbers.\n")
+print("Time needed: " + str(total_time) + " seconds.")
 print("Text file with all prime number is being opened ...")
 # gives it a better look :D
 time.sleep(2)
-## open text file with primenumbers
+# open text file with primenumbers
 os.startfile('primenumber_list.txt')
 input("Press enter to terminate this file!")
